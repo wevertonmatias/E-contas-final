@@ -1,0 +1,1 @@
+web: gunicorn econtas.wsgi --log-file -
