@@ -1,0 +1,80 @@
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
+
+{% block link-4 %}
+> Pagamento
+{% endblock %}
+{% block div-main %}
+
+<div class="container-fluid">
+    <a class="btn btn-success text-white m-1" href="{% url 'cadastro_pagamento' %}">
+        <h7>Cadastrar Pagamento <i class="fas fa-plus-circle"></i></h7>
+    </a>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col"> Descrição</th>
+                <th scope="col"> Data Vencimento</th>
+                <th scope="col"> Fornecedor</th>
+                <th scope="col"> Status</th>
+                <th scope="col"> Valor</th>
+                <th scope="col"> Editar</th>
+                <th scope="col"> Detalhes</th>
+                <th scope="col"> Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pagamento in object_list %}
+            <tr>
+                <th scope="row">{{ pagamento.id}}</th>
+                <td>{{ pagamento.descricao }}</td>
+                <td>{{ pagamento.data_de_vencimento }}</td>
+                <td>{{ pagamento.fornecedor }}</td>
+                <td>{{ pagamento.status_pagamento }}</td>
+                <td>{{ pagamento.valor }}</td>
+                <td>
+                    <a class="text-dark" title="Editar Empresa" href="{% url 'atualiza_pagamento' pagamento.pk %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td><a class="text-dark" title="Mostrar Detalhes" href="{% url 'detalhe_pagamento' pagamento.pk %}">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+                </td>
+                <td><a title="Deletar Empresa" class="fas fa-trash-alt" href="{% url 'deleta_pagamento' pagamento.pk %}"></a></td>
+            </tr>
+            </a>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p class="paginator">
+    {% if is_paginated %}
+<div>
+    <span class="page-links">
+        <div class="row">
+            <div class="col-sm">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Anterior</a>
+                {% endif %}
+            </div>
+            {% if page_obj.has_next %}
+            <div class="col-sm">
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Próximo</a>
+            </div>
+            {% endif %}
+            <span class="page-current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+        </div>
+    </span>
+</div>
+{% endif %}
+</p>
+{% endblock %}
+
+
+

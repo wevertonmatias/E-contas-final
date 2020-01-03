@@ -1,0 +1,24 @@
+{% extends 'adm/gerenciamento/detalhe/detalhe_base.html' %}
+{% load bootstrap %}
+{% block link-4 %}
+> Fornecedor
+{% endblock %}
+{% block div-1 %}
+<div class="row">
+    <div class="container mb-1">
+        <a class="btn btn-success btn-md" href="{% url 'lista_fornecedor' %}">Voltar</a>
+        <a class="btn btn-secondary btn-md" href="{% url 'atualiza_fornecedor' fornecedor.pk %}">Editar</a>
+        <a class="btn btn-primary btn-md" href="{% url 'deleta_fornecedor' fornecedor.pk %}">Deletar</a>
+    </div>
+</div>
+<ul class="list-group">
+    <li class="list-group-item">Código. {{object.pk}}</li>
+    <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+    <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
+    <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
+    <li class="list-group-item">Telefone: {{object.telefone}}</li>
+    <li class="list-group-item">Tipo de parceria: {{object.tipo_de_parceria}}</li>
+</ul>
+
+{% endblock %}
+</div>

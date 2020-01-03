@@ -1,0 +1,55 @@
+{% extends 'admin/index.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #content-related{
+    position:absolute;
+    z-index:-1;
+    }s
+</style>
+
+<div class="breadcrumbs">
+    {% block link-1 %}
+    <a href="http://127.0.0.1:8000/econtas/adm">Início</a>
+    {% endblock %}
+
+    {% block link-2 %}
+
+    {% endblock %}
+
+    {% block link-3 %}
+
+    {% endblock %}
+
+    {% block link-4 %}
+
+    {% endblock %}
+
+</div>
+
+<div id="content-main">
+    {% block div-main %}
+    <div class="app-E_contas module">
+        {%block div-1 %}
+
+        {%endblock %}
+    </div>
+
+    <div class="app-E_contas module">
+        {%block div-2 %}
+
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}
+{% include 'site/common/script.html' %}
+
+{% block extrahead %}
+    {% include 'adm/comuns/head_adm_base.html' %}
+
+    {% block script %}
+
+    {% endblock %}
+
+{% endblock %}

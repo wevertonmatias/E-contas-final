@@ -1,0 +1,18 @@
+{% extends 'adm/cadastro/cadastro_base.html' %}
+{%load bootstrap %}
+
+{% block link-3 %}
+   > Local de Recebimento
+{% endblock %}
+
+{% block div-1 %}
+    <label class="text-danger">Os campos com (*) são obrigatórios</label>
+    <form method="post">
+        {% csrf_token %}
+        {{ form | bootstrap }}
+        <input class="btn btn-success btn-md btn-block" type="submit" value="Cadastrar">
+        <a class="btn btn-primary btn-md btn-block" href="{% url 'cadastro'%}">Voltar</a>
+    </form>
+
+
+{% endblock %}
