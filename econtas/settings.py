@@ -46,7 +46,7 @@ ROOT_URLCONF = 'econtas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -112,6 +112,10 @@ STATICFILES_DIRS = [
     'static'
 ]
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'adm'
+LOGOUT_REDIRECT_URL = 'index'
+
 # CONFIGURAÇÕES PERSONALIZADAS
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
@@ -121,7 +125,7 @@ BATON = {
     'SITE_TITLE': 'E-Contas',
     'INDEX_TITLE': 'E-Contas Administração',
     'SUPPORT_HREF': 'http://127.0.0.1:8000/econtas/contato',
-    'COPYRIGHT': 'copyright © 2019 <a href="http://127.0.0.1:8000/econtas/contato">E-Contas S.A </a>',  # noqa
+    'COPYRIGHT': 'copyright © 2019 <a href="http://e-contas-final.herokuapp.com/">E-Contas S.A </a>',  # noqa
     'POWERED_BY': '<a href="https://github.com/wevertonmatias">Weverton Matias</a>',
     'CONFIRM_UNSAVED_CHANGES': True,
     'SHOW_MULTIPART_UPLOADING': True,

@@ -15,9 +15,21 @@
             <li class="nav-item">
                 <a id="parceiros" class="nav-link" href="{% url 'parceiro' %} ">Parceiros</a>
             </li>
-            <li class="nav-item">
-                <a id="acessar_conta" class="nav-link" href="{% url 'acessar_conta' %}">Acessar Conta</a>
+            {% if user.is_authenticated %}
+             <li class="nav-item">
+                 <p class="nav-link">Bem Vindo(a) {{user}}</p>
             </li>
+            <li class="nav-item">
+                <a id="logout" class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a id="sistema" class="nav-link" href="{% url 'adm' %}">Sistema</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a id="acessar_conta" class="nav-link" href="{% url 'login' %}">Acessar Conta</a>
+            </li>
+            {% endif %}
 
         </ul>
     </div>

@@ -1,28 +1,32 @@
 from datetime import timezone
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
 from easy_pdf.views import PDFTemplateView, PDFTemplateResponseMixin
 
 # from .form import *
 from .models import *
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DetailView, View, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 from django.db.models import Sum
 
 
-class AdmBase(TemplateView):
+class AdmBase(LoginRequiredMixin, TemplateView):
     template_name = 'adm/comuns/adm_base.html'
 
 
-class Adm(TemplateView):
+class Adm(LoginRequiredMixin, TemplateView):
     template_name = 'adm/comuns/adm.html'
 
 
-class Cadastro(TemplateView):
+class Cadastro(LoginRequiredMixin, TemplateView):
     template_name = 'adm/cadastro/cadastro_base.html'
 
 
-class CadastroVenda(CreateView):
+class CadastroVenda(LoginRequiredMixin, CreateView):
     template_name = 'adm/cadastro/venda.html'
     model = Venda
     fields = '__all__'
@@ -31,7 +35,7 @@ class CadastroVenda(CreateView):
         return reverse_lazy('lista_venda')
 
 
-class CadastroFornecedor(CreateView):
+class CadastroFornecedor(LoginRequiredMixin, CreateView):
     template_name = 'adm/cadastro/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
@@ -40,7 +44,7 @@ class CadastroFornecedor(CreateView):
         return reverse_lazy('lista_fornecedor')
 
 
-class CadastroEmpresa(CreateView):
+class CadastroEmpresa(LoginRequiredMixin, CreateView):
     template_name = 'adm/cadastro/empresa.html'
     model = Empresa
     fields = '__all__'
@@ -49,7 +53,7 @@ class CadastroEmpresa(CreateView):
         return reverse_lazy('lista_empresa')
 
 
-class CadastroPagamento(CreateView):
+class CadastroPagamento(LoginRequiredMixin, CreateView):
     template_name = 'adm/cadastro/pagamento.html'
     model = Pagamento
     fields = '__all__'
@@ -58,7 +62,7 @@ class CadastroPagamento(CreateView):
         return reverse_lazy('lista_pagamento')
 
 
-class CadastroLocalRecebimento(CreateView):
+class CadastroLocalRecebimento(LoginRequiredMixin, CreateView):
     template_name = 'adm/cadastro/local_recebimento.html'
     model = LocalRecebimento
     fields = '__all__'
@@ -67,46 +71,46 @@ class CadastroLocalRecebimento(CreateView):
         return reverse_lazy('lista_local_recebimento')
 
 
-class Gerenciamento(TemplateView):
+class Gerenciamento(LoginRequiredMixin, TemplateView):
     template_name = 'adm/gerenciamento/gerenciamento_base.html'
 
 
-class ListaVenda(ListView):
+class ListaVenda(LoginRequiredMixin, ListView):
     template_name = 'adm/gerenciamento/lista/venda.html'
     model = Venda
     fields = '__all__'
     paginate_by = 2
 
 
-class ListaFornecedor(ListView):
+class ListaFornecedor(LoginRequiredMixin, ListView):
     template_name = 'adm/gerenciamento/lista/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
     paginate_by = 2
 
 
-class ListaEmpresa(ListView):
+class ListaEmpresa(LoginRequiredMixin, ListView):
     template_name = 'adm/gerenciamento/lista/empresa.html'
     model = Empresa
     fields = '__all__'
     paginate_by = 2
 
 
-class ListaPagamento(ListView):
+class ListaPagamento(LoginRequiredMixin, ListView):
     template_name = 'adm/gerenciamento/lista/pagamento.html'
     model = Pagamento
     fields = '__all__'
     paginate_by = 2
 
 
-class ListaLocalRecebimento(ListView):
+class ListaLocalRecebimento(LoginRequiredMixin, ListView):
     template_name = 'adm/gerenciamento/lista/local_recebimento.html'
     model = LocalRecebimento
     fields = '__all__'
     paginate_by = 2
 
 
-class AtualizaVenda(UpdateView):
+class AtualizaVenda(LoginRequiredMixin, UpdateView):
     template_name = 'adm/gerenciamento/atualiza/venda.html'
     model = Venda
     fields = '__all__'
@@ -115,7 +119,7 @@ class AtualizaVenda(UpdateView):
         return reverse_lazy('lista_venda')
 
 
-class AtualizaFornecedor(UpdateView):
+class AtualizaFornecedor(LoginRequiredMixin, UpdateView):
     template_name = 'adm/gerenciamento/atualiza/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
@@ -124,7 +128,7 @@ class AtualizaFornecedor(UpdateView):
         return reverse_lazy('lista_fornecedor')
 
 
-class AtualizaEmpresa(UpdateView):
+class AtualizaEmpresa(LoginRequiredMixin, UpdateView):
     template_name = 'adm/gerenciamento/atualiza/empresa.html'
     model = Empresa
     fields = '__all__'
@@ -133,7 +137,7 @@ class AtualizaEmpresa(UpdateView):
         return reverse_lazy('lista_empresa')
 
 
-class AtualizaPagamento(UpdateView):
+class AtualizaPagamento(LoginRequiredMixin, UpdateView):
     template_name = 'adm/gerenciamento/atualiza/pagamento.html'
     model = Pagamento
     fields = '__all__'
@@ -142,7 +146,7 @@ class AtualizaPagamento(UpdateView):
         return reverse_lazy('lista_pagamento')
 
 
-class AtualizaLocalRecebimento(UpdateView):
+class AtualizaLocalRecebimento(LoginRequiredMixin, UpdateView):
     template_name = 'adm/gerenciamento/atualiza/local_recebimento.html'
     model = LocalRecebimento
     fields = '__all__'
@@ -151,34 +155,34 @@ class AtualizaLocalRecebimento(UpdateView):
         return reverse_lazy('lista_local_recebimento')
 
 
-class DetalheVenda(DetailView):
+class DetalheVenda(LoginRequiredMixin, DetailView):
     template_name = 'adm/gerenciamento/detalhe/venda.html'
     model = Venda
 
 
-class DetalheEmpresa(DetailView):
+class DetalheEmpresa(LoginRequiredMixin, DetailView):
     template_name = 'adm/gerenciamento/detalhe/empresa.html'
     model = Empresa
 
 
-class DetalheFornecedor(DetailView):
+class DetalheFornecedor(LoginRequiredMixin, DetailView):
     template_name = 'adm/gerenciamento/detalhe/fornecedor.html'
     model = Fornecedor
 
 
-class DetalhePagamento(DetailView):
+class DetalhePagamento(LoginRequiredMixin, DetailView):
     template_name = 'adm/gerenciamento/detalhe/pagamento.html'
     model = Pagamento
     field = '__all__'
 
 
-class DetalheLocalRecebimento(DetailView):
+class DetalheLocalRecebimento(LoginRequiredMixin, DetailView):
     template_name = 'adm/gerenciamento/detalhe/local_recebimento.html'
     model = LocalRecebimento
     field = '__all__'
 
 
-class DeletaVenda(DeleteView):
+class DeletaVenda(LoginRequiredMixin, DeleteView):
     model = Venda
     template_name = 'adm/gerenciamento/deleta/venda.html'
 
@@ -186,7 +190,7 @@ class DeletaVenda(DeleteView):
         return reverse_lazy('lista_venda')
 
 
-class DeletaEmpresa(DeleteView):
+class DeletaEmpresa(LoginRequiredMixin, DeleteView):
     model = Empresa
     template_name = 'adm/gerenciamento/deleta/empresa.html'
 
@@ -194,7 +198,7 @@ class DeletaEmpresa(DeleteView):
         return reverse_lazy('lista_empresa')
 
 
-class DeletaPagamento(DeleteView):
+class DeletaPagamento(LoginRequiredMixin, DeleteView):
     model = Pagamento
     template_name = 'adm/gerenciamento/deleta/pagamento.html'
 
@@ -202,7 +206,7 @@ class DeletaPagamento(DeleteView):
         return reverse_lazy('lista_pagamento')
 
 
-class DeletaFornecedor(DeleteView):
+class DeletaFornecedor(LoginRequiredMixin, DeleteView):
     model = Fornecedor
     template_name = 'adm/gerenciamento/deleta/fornecedor.html'
 
@@ -210,7 +214,7 @@ class DeletaFornecedor(DeleteView):
         return reverse_lazy('lista_fornecedor')
 
 
-class DeletaLocalRecebimento(DeleteView):
+class DeletaLocalRecebimento(LoginRequiredMixin, DeleteView):
     model = LocalRecebimento
     template_name = 'adm/gerenciamento/deleta/local_recebimento.html'
 
@@ -218,11 +222,11 @@ class DeletaLocalRecebimento(DeleteView):
         return reverse_lazy('lista_local_recebimento')
 
 
-class Grafico(TemplateView):
+class Grafico(LoginRequiredMixin, TemplateView):
     template_name = 'adm/grafico/grafico_base.html'
 
 
-class GraficoContaPagarReceber(TemplateView):
+class GraficoContaPagarReceber(LoginRequiredMixin, TemplateView):
     template_name = 'adm/grafico/grafico_conta_pagar_receber.html'
 
     def get_context_data(self, **kwargs):
@@ -232,7 +236,7 @@ class GraficoContaPagarReceber(TemplateView):
         return ctx
 
 
-class GraficoContaPagaPorEmpresa(TemplateView):
+class GraficoContaPagaPorEmpresa(LoginRequiredMixin, TemplateView):
     template_name = 'adm/grafico/grafico_paga_por_empresa.html'
 
     def get_context_data(self, **kwargs):
@@ -242,11 +246,11 @@ class GraficoContaPagaPorEmpresa(TemplateView):
         return ctx
 
 
-class Relatorio(TemplateView):
+class Relatorio(LoginRequiredMixin, TemplateView):
     template_name = 'adm/relatorio/relatorio_base.html'
 
 
-class RelAPagar(ListView, PDFTemplateResponseMixin):
+class RelAPagar(LoginRequiredMixin, ListView, PDFTemplateResponseMixin):
     template_name = 'adm/relatorio/a_pagar.html'
     model = Pagamento
     fields = '__all__'
@@ -261,20 +265,12 @@ class Index(TemplateView):
         return ctx
 
 
-class Home_admin(TemplateView):
-    template_name = 'adm/home_admin.html'
-
-
 class Contato(TemplateView):
     template_name = 'site/contato.html'
 
 
 class Parceiro(TemplateView):
     template_name = 'site/parceiro.html'
-
-
-class Acessar_conta(TemplateView):
-    template_name = 'site/acessar_conta.html'
 
 
 class Sistema(TemplateView):

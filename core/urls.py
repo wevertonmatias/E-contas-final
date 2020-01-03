@@ -49,6 +49,5 @@ urlpatterns = [
                   path('', Index.as_view(), name="index"),
                   path('contato', Contato.as_view(), name="contato"),
                   path('parceiro', Parceiro.as_view(), name="parceiro"),
-                  path('acessar_conta', Acessar_conta.as_view(), name="acessar_conta"),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
