@@ -10,17 +10,21 @@
 
 <body>
 
-    <header>
-        {% include 'site/common/header.html' %}
-    </header>
+<header>
+    {% include 'site/common/header.html' %}
+</header>
 
-    <div class="container border">
-        <div class="h2 text-center">
+<div class="container-fluid">
+    <div class="row">
+        <div class="h2 mx-auto">
             <label>Nossos Parceiros</label>
         </div>
-        <div class="container">
-            <div class="card-group">
-                <div class="card-1 bg-dark text-light m-2" style="max-width: 18rem;">
+    </div>
+
+    <div class="card-group">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-2">
+                <div class="card-1 bg-dark text-light mx-auto" style="max-width: 18rem;">
                     <img src="{% static 'img/comida_chinesa.jpg'%}" class="card-img-top" alt="chinesa">
                     <div class="card-body">
                         <h5 class="card-title">Tofu Recheado</h5>
@@ -28,15 +32,19 @@
                         <a href="#" class="btn btn-primary">Visite</a>
                     </div>
                 </div>
-                <div class="card-2 text-white bg-danger m-2" style="max-width: 18rem;">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-2">
+                <div class="card-2 bg-dark text-white mx-auto" style="max-width: 18rem;">
                     <img src="{% static 'img/comida_mexicana.jpg' %} " class="card-img-top" alt="mexicana">
                     <div class="card-body">
-                        <h5 class="card-title">Chilli Beans</h5>
-                        <p class="card-text">Chilli Beans, Alimentando por várias gerações</p>
+                        <h5 class="card-title">Mexicana Beans</h5>
+                        <p class="card-text">Mexicana Beans, Alimentando por várias gerações</p>
                         <a href="#" class="btn btn-primary">Visite</a>
                     </div>
                 </div>
-                <div class="card-3 text-white bg-secondary m-2" style="max-width: 18rem;">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-2">
+                <div class="card-3 text-white bg-dark mx-auto" style="max-width: 18rem;">
                     <img src="{% static 'img/jo%C3%A3o_sapatos.jpg' %} " class="card-img-top" alt="joão">
                     <div class="card-body">
                         <h5 class="card-title">João Calçados</h5>
@@ -47,8 +55,9 @@
             </div>
         </div>
     </div>
+</div>
 
-    {% include 'site/common/script.html' %}
+{% include 'site/common/script.html' %}
 </body>
 
 </html>
