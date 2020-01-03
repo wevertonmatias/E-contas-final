@@ -1,40 +1,45 @@
 {% load static %}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <h3 class="text-white-50">E-Contas</h3>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-        <h3 class="text-white-50">E-Contas</h3>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav ml-auto h4">
+                    <li id="id-home" class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="contato" class="nav-link" href="{% url 'contato' %}">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="parceiros" class="nav-link" href="{% url 'parceiro' %} ">Parceiros</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <p class="nav-link">Bem Vindo(a) {{user}}</p>
+                    </li>
+                    <li class="nav-item">
+                        <a id="logout" class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="sistema" class="nav-link" href="{% url 'adm' %}">Sistema</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a id="acessar_conta" class="nav-link" href="{% url 'login' %}">Acessar Conta</a>
+                    </li>
+                    {% endif %}
 
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li  id="id-home" class="nav-item">
-                <a  class="nav-link" href="{% url 'index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a id="contato" class="nav-link" href="{% url 'contato' %}">Contato</a>
-            </li>
-            <li class="nav-item">
-                <a id="parceiros" class="nav-link" href="{% url 'parceiro' %} ">Parceiros</a>
-            </li>
-            {% if user.is_authenticated %}
-             <li class="nav-item">
-                 <p class="nav-link">Bem Vindo(a) {{user}}</p>
-            </li>
-            <li class="nav-item">
-                <a id="logout" class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a id="sistema" class="nav-link" href="{% url 'adm' %}">Sistema</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a id="acessar_conta" class="nav-link" href="{% url 'login' %}">Acessar Conta</a>
-            </li>
-            {% endif %}
+                </ul>
+            </div>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        </ul>
+        </nav>
     </div>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-    </button>
-
-</nav>
+</div>
