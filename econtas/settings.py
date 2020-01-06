@@ -14,7 +14,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'e-contas-final.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'e-contas-final.herokuapp.com', '192.168.1.4']
 
 # Application definition
 INSTALLED_APPS = [
@@ -125,7 +125,8 @@ BATON = {
     'SITE_TITLE': 'E-Contas',
     'INDEX_TITLE': 'E-Contas Administração',
     'SUPPORT_HREF': 'http://e-contas-final.herokuapp.com/econtas/contato',
-    'COPYRIGHT': 'copyright © 2019 <a href="http://e-contas-final.herokuapp.com/econtas/contato">E-Contas S.A </a>',  # noqa
+    'COPYRIGHT': 'copyright © 2019 <a href="http://e-contas-final.herokuapp.com/econtas/contato">E-Contas S.A </a>',
+    # noqa
     'POWERED_BY': '<a href="https://github.com/wevertonmatias">Weverton Matias</a>',
     'CONFIRM_UNSAVED_CHANGES': True,
     'SHOW_MULTIPART_UPLOADING': True,
@@ -157,9 +158,11 @@ BATON = {
         {'type': 'free', 'icon': 'fas fa-plus-circle', 'label': 'Cadastrar', 'children': [
             {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
             {'type': 'free', 'label': 'Vendas', 'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/venda/'},
-            {'type': 'free', 'label': 'Pagamentos', 'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/pagamento'},
+            {'type': 'free', 'label': 'Pagamentos',
+             'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/pagamento'},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/empresa/'},
-            {'type': 'free', 'label': 'Fornecedores', 'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/fornecedor/'},
+            {'type': 'free', 'label': 'Fornecedores',
+             'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/fornecedor/'},
             {'type': 'free', 'label': 'Local de Recebimento',
              'url': 'http://e-contas-final.herokuapp.com/adm/cadastro/local_de_recebimento'},
         ]},
@@ -168,7 +171,8 @@ BATON = {
             {'type': 'free', 'label': 'Vendas', 'url': 'http://e-contas-final.herokuapp.com/adm/lista/venda/'},
             {'type': 'free', 'label': 'Pagamentos', 'url': 'http://e-contas-final.herokuapp.com/adm/lista/pagamento'},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://e-contas-final.herokuapp.com/adm/lista/empresa/'},
-            {'type': 'free', 'label': 'Fornecedores', 'url': 'http://e-contas-final.herokuapp.com/adm/lista/fornecedor/'},
+            {'type': 'free', 'label': 'Fornecedores',
+             'url': 'http://e-contas-final.herokuapp.com/adm/lista/fornecedor/'},
             {'type': 'free', 'label': 'Local de Recebimento',
              'url': 'http://e-contas-final.herokuapp.com/adm/lista/local_recebimento'},
         ]},

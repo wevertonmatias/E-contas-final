@@ -2,26 +2,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>E-Conta</title>
+    <title>E-Contas</title>
     <meta charset="utf-8">
     {% include 'site/common/link.html' %}
 </head>
 
-<body>
-<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 col-lg-12 col-xl-12">
-        <header>
+<body class="bg-secondary">
+<div class="container-fluid">
+    <header>
+        <div class="row">
             {% include 'site/common/header.html' %}
-        </header>
+        </div>
+    </header>
+
+    <div class="row mt-2">
+        {% include 'site/common/banner/banner.html' %}
     </div>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            {% include 'site/common/footer.html' %}
+        </div>
+    </footer>
 </div>
 
-<div>
-    {% include 'site/common/banner/banner.html' %}
-</div>
-<footer>
-    {% include 'site/common/footer.html' %}
-</footer>
 {% include 'site/common/script.html' %}
+
 </body>
 </html>                                             
